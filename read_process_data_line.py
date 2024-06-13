@@ -46,10 +46,10 @@ def read_data(file_path, face_nb_max=0):
 
 if __name__ == '__main__':
     args = parse_args()
-    annotations_file = '../../../Dataset/WIDER/wider_face_train_bbx_gt.txt'
-    train_data = read_data(annotations_file)
-    image_data = choice(train_data)
-    image_path = os.path.join(args.data_train, image_data['file_path'])
+    train_data = read_data(args.train_annotations)
+    val_data = read_data(args.val_annotations)
+    image_data = choice(val_data)
+    image_path = os.path.join(args.train_dir, image_data['file_path'])
     image = cv2.imread(image_path).astype(np.float32) / 255.0
     if image is None:
         print(f"Image not found at path: {image_path}")

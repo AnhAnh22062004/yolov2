@@ -81,13 +81,13 @@ def custom_loss(output_tensor, target_tensor):
     total_loss = xy_loss + wh_loss + obj_loss + cls_loss
     return total_loss
 
-batch_size = 32
-num_channels = 3
-grid_size = 7
-num_outputs = 5 * (4 + 1 + args.cls) 
+# batch_size = 32
+# num_channels = 3
+# grid_size = 7
+# num_outputs = 5 * (4 + 1 + args.cls) 
 
-output_tensor = torch.randn(batch_size, grid_size, grid_size,args.box, num_outputs)
-target_tensor = torch.randn(batch_size, grid_size, grid_size,args.box, num_outputs)
-loss = custom_loss(output_tensor, target_tensor)
+# output_tensor = torch.randn(batch_size, grid_size, grid_size,args.box, num_outputs)
+# target_tensor = torch.randn(batch_size, grid_size, grid_size,args.box, num_outputs)
+# loss = custom_loss(output_tensor, target_tensor)
 
-print("Loss:", loss.item())
+# print("Loss:", loss.item())

@@ -54,14 +54,8 @@ class TINYMODEL(torch.nn.Module):
         
     def forward(self, input):
         output_tensor = self.layers(input)
-        output_tensor = output_tensor.permute(0, 2, 3, 1)
-        print("input tensor shape:", output_tensor.shape)  
+        output_tensor = output_tensor.permute(0, 2, 3, 1) 
         W_grid, H_grid = self.S, self.S
         output_tensor = output_tensor.view(-1, H_grid, W_grid, self.BOX, 4 + 1 + self.CLS)
         return output_tensor
 
-
-model = TINYMODEL(S=args.grid, BOX=args.box, CLS=args.cls)
-test_img = torch.rand(1, 3, 416, 416)
-output = model(test_img)
-print("output tensor shape", output.shape)
